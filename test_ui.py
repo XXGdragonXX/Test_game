@@ -73,8 +73,7 @@ def game_ui():
             st.session_state['selected_location'] = selected_location
             desc = selected_location
             quest = generate_quest(desc)
-            quest_dict = ast.literal_eval(quest)
-            st.write(type(quest_dict))
+
 
             st.session_state['quest'] = quest_dict
             if st.button('Lets gooooooo'):
@@ -83,8 +82,7 @@ def game_ui():
 
 def game_page():
     st.header("We are on game page")
-    st.title(st.session_state['quest']['quest_title'])
-    st.json(st.session_state['quest'])
+    st.write(st.session_state['quest'])
     
 
 
