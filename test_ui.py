@@ -92,7 +92,7 @@ if __name__ == "__main__":
         st.session['page'] = 'input'
     if st.session_state['page'] == 'input':
         game_ui()
-    if st.session_state['page'] == 'output'
+    if st.session_state['page'] == 'output':
         game_page()
 
     
