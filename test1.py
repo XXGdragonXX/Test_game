@@ -1,6 +1,7 @@
 import random
 from groq import Groq
 from dotenv import load_dotenv
+import re
 
 
 
@@ -25,7 +26,9 @@ def generate_quest(location):
                       {'role':'user','content':f'generate a intersting quest for the location : {location}'}
                       ]
     )
-    return response.choices[0].message.content
+    response =  response.choices[0].message.content
+    return re.sub(r'<think>.*?</think>', '', response, flags=re.DOTALL).strip()
+
 
 # def main():
 #     player_loc = "tavern"
