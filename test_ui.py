@@ -29,7 +29,7 @@ def game_ui():
 
         if generate_btn:
             world_data = create_world(selected_locations)
-            st.display(world_data)
+            st.write(world_data)
 
 
 if __name__ == "__main__":
