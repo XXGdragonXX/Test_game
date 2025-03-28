@@ -73,13 +73,12 @@ def game_ui():
             quest = generate_quest(desc)
             st.session_state['quest'] = quest
             if st.button('Lets gooooooo'):
-                st.subheader(f"Quest in {desc.capitalize()}")
-                st.write(quest)
                 st.session_state['page'] = 'output'
 
 
 def game_page():
     st.header("We are on game page")
+    st.title(st.session_state['quest_title'])
     st.json(st.session_state['quest'])
     
 
