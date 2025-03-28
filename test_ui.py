@@ -1,5 +1,6 @@
 import streamlit as st
 from test1 import create_world , generate_quest  
+import logger
 
 def game_ui():
     st.title('🎮 Procedural Adventure Game')
@@ -49,7 +50,7 @@ def game_ui():
 
         if selected_location:
             st.session_state['selected_location'] = selected_location
-
+            logger.info(st.session_state['selected_location'])
             quest = generate_quest(st.session_state['selected_location'])
             st.subheader(f"Quest in {st.session_state['selected_location'].capitalize()}")
             st.write(quest)
