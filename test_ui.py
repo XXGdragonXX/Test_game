@@ -1,5 +1,5 @@
 import streamlit as st
-from test1 import main  # Assuming main() returns your game world
+from test1 import main  
 
 def game_ui():
     st.title('🎮 Procedural Adventure Game')
