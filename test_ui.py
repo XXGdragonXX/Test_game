@@ -50,7 +50,7 @@ def game_ui():
         else:
             st.session_state['world_data'] = create_world(selected_locations)
             st.session_state.selected_location = None
-            logging.info(st.session_state['world_data'])
+            st.json(st.session_state['world_data'])
 
         # st.write(world_data)
     if st.session_state['world_data']:
