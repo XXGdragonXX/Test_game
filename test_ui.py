@@ -89,7 +89,7 @@ def game_page():
 
 if __name__ == "__main__":
     if 'page' not in st.session_state:
-        st.session['page'] = 'input'
+        st.session_state['page'] = 'input'
     if st.session_state['page'] == 'input':
         game_ui()
     if st.session_state['page'] == 'output':
