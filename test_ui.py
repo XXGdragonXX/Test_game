@@ -48,9 +48,10 @@ def game_ui():
             help="Choose one room"  # Help text
             )
 
+        logging.info(st.session_state['selected_location'])
+
         if selected_location:
             st.session_state['selected_location'] = selected_location
-            logging.info(st.session_state['selected_location'])
             quest = generate_quest(st.session_state['selected_location'])
             st.subheader(f"Quest in {st.session_state['selected_location'].capitalize()}")
             st.write(quest)
