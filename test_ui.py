@@ -31,5 +31,9 @@ def game_ui():
 
             st.display(world_data)
 
+
+if __name__ == "__main__":
+    game_ui()
+
     
     
