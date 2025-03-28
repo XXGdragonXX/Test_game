@@ -14,6 +14,7 @@ def game_ui():
         generate_btn = st.button("Generate New World")
 
         if generate_btn:
+            locations = ["forest", "tavern", "cave", "castle"]
             select_all = st.checkbox("Select All")
             if select_all:
                 selected_locations = st.multiselect(
