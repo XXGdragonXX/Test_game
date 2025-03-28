@@ -39,7 +39,7 @@ def game_ui():
         room_list = []
         for key in st.session_state['world_data'].keys():
             room_list.append(key)
-
+        st.subheader(f"The available Rooms are {room_list}")
         selected_location = st.selectbox(
             "Select a room:",  # Label
             room_list,             # List of options
