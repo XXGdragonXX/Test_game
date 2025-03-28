@@ -28,6 +28,7 @@ def game_ui():
             )
 
     if generate_btn:
+        st.session_state['world_data'] = None
         if not selected_locations:
             st.sidebar_warning("Select at least one location ")
         else:
