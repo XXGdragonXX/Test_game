@@ -40,18 +40,20 @@ def game_ui():
         for key in st.session_state['world_data'].keys():
             room_list.append(key)
 
-        select_location = st.selectbox(
+        selected_location = st.selectbox(
             "Select a room:",  # Label
             room_list,             # List of options
             index=None,        # No default selection (optional)
             help="Choose one room"  # Help text
             )
-        st.session_state['selected_location'] = st.button(f"confirm location as  {select_location}")
 
-        if st.session_state['selected_location']:
-            quest = generate_quest(selected_room)
-            st.subheader(f"Quest in {selected_room.capitalize()}")
-            st.write(quest)
+        if st.button(f"Explore {selected_room}" if selected_room else "Explore"):
+            if selected_location:
+                st.session_state['selected_location'] = selected_location
+
+                quest = generate_quest(st.session_state['selected_location'])
+                st.subheader(f"Quest in {st.session_state['selected_location'].capitalize()}")
+                st.write(quest)
 
         else:
             st.warning('Select a destination first')
