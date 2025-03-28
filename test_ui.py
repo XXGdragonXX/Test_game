@@ -47,13 +47,12 @@ def game_ui():
             help="Choose one room"  # Help text
             )
 
-        if st.button(f"Explore {selected_location}" if selected_location else "Explore"):
-            if selected_location:
-                st.session_state['selected_location'] = selected_location
+        if selected_location:
+            st.session_state['selected_location'] = selected_location
 
-                quest = generate_quest(st.session_state['selected_location'])
-                st.subheader(f"Quest in {st.session_state['selected_location'].capitalize()}")
-                st.write(quest)
+            quest = generate_quest(st.session_state['selected_location'])
+            st.subheader(f"Quest in {st.session_state['selected_location'].capitalize()}")
+            st.write(quest)
 
         else:
             st.warning('Select a destination first')
