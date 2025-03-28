@@ -10,7 +10,7 @@ def game_ui():
     """)
     if 'world_data' not in st.session_state:
         st.session_state['world_data'] = None
-    if 'selected_location' not in st.session_state
+    if 'selected_location' not in st.session_state:
         st.session_state['selected_location'] = None
     
     # Sidebar controls
