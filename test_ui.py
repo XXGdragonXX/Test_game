@@ -37,6 +37,7 @@ def game_ui():
             st.session_state['selected_location'] = None
         # st.write(world_data)
         if st.session_state['world_data']:
+            logging.info(st.session_state['world_data'])
             room_list = []
             for key in st.session_state['world_data'].keys():
                 room_list.append(key)
