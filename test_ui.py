@@ -8,6 +8,10 @@ def game_ui():
     Welcome to the AI-generated adventure!  
     This game creates a unique world every time you play.
     """)
+    if 'world_data' not in st.session_state:
+        st.session_state['world_data'] = None
+    if 'selected_location' not in st.session_state
+        st.session_state['selected_location'] = None
     
     # Sidebar controls
     with st.sidebar:
@@ -27,39 +31,37 @@ def game_ui():
                 locations,
                 default=None  # No selection by default
             )
-    st.session_state['world_data'] = None
+
 
     if generate_btn:
         if not selected_locations:
             st.sidebar.warning("Select at least one location ")
         else:
             st.session_state['world_data'] = create_world(selected_locations)
-            st.session_state['selected_location'] = None
+            st.session_state.selected_location = None
             logging.info(st.session_state['world_data'])
 
         # st.write(world_data)
-        if st.session_state['world_data']:
-            room_list = []
-            for key in st.session_state['world_data'].keys():
-                room_list.append(key)
-            st.subheader(f"The available Rooms are {room_list}")
-            selected_location = st.selectbox(
-                "Select a room:",  
-                room_list,             
-                index=None,        
-                help="Choose one room"  
-                )
+    if st.session_state['world_data']:
+        room_list = list(st.session_state['world_data'].keys())
+        st.subheader(f"The available Rooms are {room_list}")
+        selected_location = st.selectbox(
+            "Select a room:",  
+            room_list,             
+            index=None,        
+            help="Choose one room"  
+            )
 
-            logging.info(st.session_state['selected_location'])
+        logging.info(st.session_state['selected_location'])
 
-            if selected_location:
-                st.session_state['selected_location'] = selected_location
-                quest = generate_quest(st.session_state['selected_location'])
+        if selected_location:
+            st.session_state['selected_location'] = selected_location
+            quest = generate_quest(st.session_state['selected_location'])
+            if st.button('Lets gooooooo'):
                 st.subheader(f"Quest in {st.session_state['selected_location'].capitalize()}")
                 st.write(quest)
 
-            else:
-                st.warning('Select a destination first')
+
 
     
 
