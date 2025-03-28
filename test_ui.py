@@ -47,7 +47,7 @@ def game_ui():
             help="Choose one room"  # Help text
             )
 
-        if st.button(f"Explore {selected_room}" if selected_room else "Explore"):
+        if st.button(f"Explore {selected_location}" if selected_location else "Explore"):
             if selected_location:
                 st.session_state['selected_location'] = selected_location
 
