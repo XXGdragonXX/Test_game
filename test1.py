@@ -18,13 +18,72 @@ def create_world(locations):
         }
     return world
 
+
+def generate_prompt(location):
+    messages = [
+    {
+        'role': 'system',
+        'content': '''
+        You are a master fantasy quest designer. Generate compelling, game-ready quests that follow EXACTLY the specified JSON format.
+        - Use rich fantasy vocabulary
+        - Include surprising twists
+        - Balance challenge levels
+        - Suggest unique rewards
+        - NEVER deviate from the required structure
+        '''
+    },
+    {
+        'role': 'user',
+        'content': f'''
+        Generate an immersive quest for: {location}
+        
+        REQUIREMENTS:
+        1. Strictly use this EXACT format (no extra fields/comments):
+        {{
+            "quest_title": "Creative title (7 words max)",
+            "main_objective": "1 clear sentence objective",
+            "side_objectives": [
+                "Optional objective 1 (12 words max)",
+                "Optional objective 2 (12 words max)",
+                "Optional objective 3 (12 words max)"
+            ],
+            "encounters_challenges": [
+                "Challenge 1 (with unique mechanic)",
+                "Challenge 2 (with unique mechanic)",
+                "Challenge 3 (boss encounter)"
+            ],
+            "rewards": [
+                "Primary reward (powerful/unique)",
+                "Secondary reward (utility)",
+                "Hidden reward (optional discovery)"
+            ]
+        }}
+        
+        2. Must include:
+        - At least one moral dilemma
+        - One environmental puzzle
+        - One combat encounter
+        - One social challenge
+        
+        3. Location Theme: Amplify the {location}'s inherent characteristics
+        
+        4. Twist: Include one unexpected story revelation
+        
+        DON'T:
+        - Add explanations
+        - Include markdown
+        - Vary from the structure
+        '''
+    }
+    ]
+
+    return message
+
 def generate_quest(location):
 
     response = client.chat.completions.create(
             model= "deepseek-r1-distill-llama-70b",
-            messages=[{'role':'system','content':'You are an helpful assistant'},
-                      {'role':'user','content':f'generate a intersting quest for the location : {location}'}
-                      ]
+            messages= generate_prompt(location)
     )
     response =  response.choices[0].message.content
     return re.sub(r'<think>.*?</think>', '', response, flags=re.DOTALL).strip()
