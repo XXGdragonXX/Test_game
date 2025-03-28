@@ -1,6 +1,7 @@
 import random
 from groq import Groq
 from dotenv import load_dotenv
+import logging
 
 
 load_dotenv()
@@ -14,7 +15,7 @@ def create_world(locations):
             "description": random.choice(["dark", "spooky", "bright"]) + " " + random.choice(locations),
             "exits": {}  # e.g., {"north": "room_2"}
         }
-    print(world)
+    logging.info(world)
     return world
 
 def generate_quest(location):
