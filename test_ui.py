@@ -1,6 +1,17 @@
 import streamlit as st
 from test1 import create_world , generate_quest  
 import logging
+import sys
+
+# Configure logging to show in terminal and Streamlit
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(sys.stdout),  
+        logging.StreamHandler(sys.stderr)   
+    ]
+)
 
 def game_ui():
     st.title('🎮 Procedural Adventure Game')
