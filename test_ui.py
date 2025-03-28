@@ -3,6 +3,7 @@ import json
 from test1 import create_world , generate_quest  
 import logging
 import sys
+import ast
 
 # Configure logging to show in terminal and Streamlit
 logging.basicConfig(
@@ -71,7 +72,8 @@ def game_ui():
         if selected_location:
             st.session_state['selected_location'] = selected_location
             desc = selected_location
-            quest = json.loads(generate_quest(desc))
+            quest = generate_quest(desc)
+            quest_json = json.loads(ast.litreal_eval(quest))
 
             st.session_state['quest'] = quest
             if st.button('Lets gooooooo'):
