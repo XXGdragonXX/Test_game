@@ -1,4 +1,5 @@
 import streamlit as st
+import json
 from test1 import create_world , generate_quest  
 import logging
 import sys
@@ -70,7 +71,8 @@ def game_ui():
         if selected_location:
             st.session_state['selected_location'] = selected_location
             desc = selected_location
-            quest = generate_quest(desc)
+            quest = json.loads(generate_quest(desc))
+
             st.session_state['quest'] = quest
             if st.button('Lets gooooooo'):
                 st.session_state['page'] = 'output'
