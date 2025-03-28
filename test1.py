@@ -20,7 +20,7 @@ def create_world(locations):
 
 
 def generate_prompt(location):
-    messages = [
+    message = [
     {
         'role': 'system',
         'content': '''
