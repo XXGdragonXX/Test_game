@@ -73,7 +73,7 @@ def game_ui():
             st.session_state['selected_location'] = selected_location
             desc = selected_location
             quest = generate_quest(desc)
-            quest_json = json.loads(ast.litreal_eval(quest))
+            quest_json = json.loads(ast.literal_eval(quest))
 
             st.session_state['quest'] = quest
             if st.button('Lets gooooooo'):
