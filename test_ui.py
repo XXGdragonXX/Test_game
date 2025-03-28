@@ -23,6 +23,8 @@ def game_ui():
         st.session_state['world_data'] = None
     if 'selected_location' not in st.session_state:
         st.session_state['selected_location'] = None
+    if 'quest' not in st.session_state:
+        st.session_state['quest'] = None
     
     # Sidebar controls
     with st.sidebar:
@@ -69,12 +71,16 @@ def game_ui():
             st.session_state['selected_location'] = selected_location
             desc = selected_location
             quest = generate_quest(desc)
+            st.session_state['quest'] = quest
             if st.button('Lets gooooooo'):
                 st.subheader(f"Quest in {desc.capitalize()}")
                 st.write(quest)
+                st.session_state['page'] = 'output'
 
 
-
+def game_page():
+    st.header("We are on game page")
+    st.json(st.session_state['quest'])
     
 
 
@@ -83,7 +89,12 @@ def game_ui():
 
 
 if __name__ == "__main__":
-    game_ui()
+    if 'page' not in st.session_state:
+        st.session['page'] = 'input'
+    if st.session_state['page'] == 'input':
+        game_ui()
+    if st.session_state['page'] == 'output'
+        game_page()
 
     
     
