@@ -67,9 +67,10 @@ def game_ui():
 
         if selected_location:
             st.session_state['selected_location'] = selected_location
-            quest = generate_quest(st.session_state['selected_location'])
+            desc = st.session_state['world_data'][selected_location]['description']
+            quest = generate_quest(desc)
             if st.button('Lets gooooooo'):
-                st.subheader(f"Quest in {st.session_state['selected_location'].capitalize()}")
+                st.subheader(f"Quest in {desc.capitalize()}")
                 st.write(quest)
 
 

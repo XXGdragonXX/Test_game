@@ -21,10 +21,7 @@ def generate_quest(location):
 
     response = client.chat.completions.create(
             model= "deepseek-r1-distill-llama-70b",
-            messages=[
-            {"role": "system", "content": "Generate a 1-sentence quest."},
-            {"role": "user", "content": f"Location: {location}"}
-        ],
+            messages=f"generate a intersting quest for the location : {location}"
         max_tokens=50,
     )
     return response.choices[0].message.content
