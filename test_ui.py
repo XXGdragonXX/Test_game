@@ -75,7 +75,7 @@ def game_ui():
             quest = generate_quest(desc)
 
 
-            st.session_state['quest'] = quest_dict
+            st.session_state['quest'] = quest
             if st.button('Lets gooooooo'):
                 st.session_state['page'] = 'output'
 
