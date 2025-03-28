@@ -36,28 +36,28 @@ def game_ui():
             st.session_state['world_data'] = create_world(selected_locations)
             st.session_state['selected_location'] = None
         # st.write(world_data)
-    if st.session_state['world_data']:
-        room_list = []
-        for key in st.session_state['world_data'].keys():
-            room_list.append(key)
-        st.subheader(f"The available Rooms are {room_list}")
-        selected_location = st.selectbox(
-            "Select a room:",  # Label
-            room_list,             # List of options
-            index=None,        # No default selection (optional)
-            help="Choose one room"  # Help text
-            )
+        if st.session_state['world_data']:
+            room_list = []
+            for key in st.session_state['world_data'].keys():
+                room_list.append(key)
+            st.subheader(f"The available Rooms are {room_list}")
+            selected_location = st.selectbox(
+                "Select a room:",  # Label
+                room_list,             # List of options
+                index=None,        # No default selection (optional)
+                help="Choose one room"  # Help text
+                )
 
-        logging.info(st.session_state['selected_location'])
+            logging.info(st.session_state['selected_location'])
 
-        if selected_location:
-            st.session_state['selected_location'] = selected_location
-            quest = generate_quest(st.session_state['selected_location'])
-            st.subheader(f"Quest in {st.session_state['selected_location'].capitalize()}")
-            st.write(quest)
+            if selected_location:
+                st.session_state['selected_location'] = selected_location
+                quest = generate_quest(st.session_state['selected_location'])
+                st.subheader(f"Quest in {st.session_state['selected_location'].capitalize()}")
+                st.write(quest)
 
-        else:
-            st.warning('Select a destination first')
+            else:
+                st.warning('Select a destination first')
 
     
 
