@@ -27,9 +27,9 @@ def game_ui():
                 default=None  # No selection by default
             )
 
-        if generate_btn:
-            world_data = create_world(selected_locations)
-            st.write(world_data)
+    if generate_btn:
+        world_data = create_world(selected_locations)
+        st.write(world_data)
 
 
 if __name__ == "__main__":
