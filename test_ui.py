@@ -29,7 +29,25 @@ def game_ui():
 
     if generate_btn:
         world_data = create_world(selected_locations)
-        st.write(world_data)
+        # st.write(world_data)
+        room_list = []
+        for key in world_data.keys():
+            room_list.append(key)
+        
+    select_location = st.selectbox(
+        "Select a room:",  # Label
+        room_list,             # List of options
+        index=None,        # No default selection (optional)
+        help="Choose one room"  # Help text
+    )
+    selected_location = st.button(f"select {select_location}")
+    if selected_location:
+        quest = generate_quest(selected_location) 
+
+        st.write(quest)
+
+
+
 
 
 if __name__ == "__main__":
