@@ -12,24 +12,23 @@ def game_ui():
     with st.sidebar:
         st.header("Game Controls")
         generate_btn = st.button("Generate New World")
+        locations = ["forest", "tavern", "cave", "castle"]
+        select_all = st.checkbox("Select All")
+        if select_all:
+            selected_locations = st.multiselect(
+                "Choose locations:",
+                locations,
+                default=locations  # Selects all if "Select All" is checked
+            )
+        else:
+            selected_locations = st.multiselect(
+                "Choose locations:",
+                locations,
+                default=None  # No selection by default
+            )
 
         if generate_btn:
-            locations = ["forest", "tavern", "cave", "castle"]
-            select_all = st.checkbox("Select All")
-            if select_all:
-                selected_locations = st.multiselect(
-                    "Choose locations:",
-                    locations,
-                    default=locations  # Selects all if "Select All" is checked
-                )
-            else:
-                selected_locations = st.multiselect(
-                    "Choose locations:",
-                    locations,
-                    default=None  # No selection by default
-                )
             world_data = create_world(selected_locations)
-
             st.display(world_data)
 
 
