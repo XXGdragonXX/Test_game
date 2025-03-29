@@ -72,17 +72,19 @@ def game_ui():
         if selected_location:
             st.session_state['selected_location'] = selected_location
             desc = selected_location
-            quest = generate_quest(desc)
 
 
-            st.session_state['quest'] = json.loads(quest)
+   
             if st.button('Lets gooooooo'):
+                quest = generate_quest(desc)
+                st.session_state['quest'] = quest
                 st.session_state['page'] = 'output'
 
 
 def game_page():
     st.header("We are on game page")
-    st.title(st.session_state['quest']['quest_title'])
+    st.write(type(st.session_state['quest']))
+    # st.title(st.session_state['quest']['quest_title'])
     st.write(st.session_state['quest'])
     
 
