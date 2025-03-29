@@ -88,7 +88,7 @@ def generate_quest(location):
             messages= generate_prompt(location)
     )
     response =  response.choices[0].message.content
-    return re.sub(r'<think>.*?</think>', '', response, flags=re.DOTALL).strip()
+    return json.loads(re.sub(r'<think>.*?</think>', '', response, flags=re.DOTALL).strip())
 
 
 # def main():
