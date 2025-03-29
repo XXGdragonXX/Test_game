@@ -82,6 +82,7 @@ def game_ui():
 
 def game_page():
     st.header("We are on game page")
+    st.title(st.session_state['quest']['quest_title'])
     st.write(st.session_state['quest'])
     
 
