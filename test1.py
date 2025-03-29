@@ -89,7 +89,14 @@ def generate_quest(location):
             messages= generate_prompt(location)
     )
     response =  response.choices[0].message.content
-    return json.loads(re.sub(r'<think>.*?</think>', '', response, flags=re.DOTALL).strip())
+    clean_response = re.sub(r'<think>.*?</think>', '', response, flags=re.DOTALL).strip()
+    json_match = re.search(r'\{.*\}', clean_response, re.DOTALL)
+    if json_match:
+        return json.loads(json_match.group())
+    else:
+        return clean_response
+
+        
 
 
 # def main():
