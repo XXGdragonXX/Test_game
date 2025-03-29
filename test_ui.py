@@ -75,7 +75,7 @@ def game_ui():
             quest = generate_quest(desc)
 
 
-            st.session_state['quest'] = quest
+            st.session_state['quest'] = json.loads(quest)
             if st.button('Lets gooooooo'):
                 st.session_state['page'] = 'output'
 
