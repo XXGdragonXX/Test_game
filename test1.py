@@ -68,6 +68,8 @@ def generate_prompt(location):
         3. Location Theme: Amplify the {location}'s inherent characteristics
         
         4. Twist: Include one unexpected story revelation
+
+        5. Give the output in dictionary format so I can easily convert it into json format
         
         DON'T:
         - Add explanations
